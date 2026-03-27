@@ -7,7 +7,7 @@ First, you need to know what you're dealing with. Use Nmap to see which ports ar
     What to look for: Usually, there’s a web server running. Note the version of Apache; sometimes that's a hint.
     
     └─$ nmap -sV 10.49.182.213
-    ![scan1](./Attachments/Screenshot%202026-03-26%20182518.png)
+![scan1](./Attachments/Screenshot%202026-03-26%20182518.png)
 
 
 2. Locating Hidden Directories
@@ -19,7 +19,7 @@ Since it’s a web-based challenge, you need to find folders that aren't linked 
     Goal: You are looking for a specific directory where you can upload files and another where those files are stored.
 
     └─$ gobuster dir -u http://10.49.182.213:80 -w /usr/share/wordlists/dirb/common.txt
-    ![scan2](./Attachments/Screenshot%202026-03-26%20182531.png)
+![scan2](./Attachments/Screenshot%202026-03-26%20182531.png)
 
 3. Getting a Shell (Exploitation)
 
@@ -34,7 +34,7 @@ Step 1: The Payload
 You need a script (the "payload") that tells the server to open a connection back to you. Since RootMe is a Linux/Apache server, we usually use PHP.
 
     Common Script: The most popular one is thePentestMonkey PHP Reverse Shell.
-    ![scan3](./Attachments/Screenshot%202026-03-26%20182129.png)
+![scan3](./Attachments/Screenshot%202026-03-26%20182129.png)
     
     The Edit: You must open the script and change two things:
 
@@ -170,4 +170,4 @@ Now, go find the gold. The root flag is always in the root user's home directory
     ls
 
     cat root.txt
-    ![scan7](./Attachments/Screenshot%202026-03-26%20184938.png)
+![scan7](./Attachments/Screenshot%202026-03-26%20184938.png)
