@@ -7,8 +7,8 @@ First, you need to know what you're dealing with. Use Nmap to see which ports ar
     What to look for: Usually, there’s a web server running. Note the version of Apache; sometimes that's a hint.
     
     └─$ nmap -sV 10.49.182.213
-    ![namp-scan](Attachments/Screenshot 2026-03-26 182518.png)
-    
+    ![scan1](./Attachments/Screenshot%202026-03-26%20182518.png)
+
 
 2. Locating Hidden Directories
 
@@ -19,7 +19,7 @@ Since it’s a web-based challenge, you need to find folders that aren't linked 
     Goal: You are looking for a specific directory where you can upload files and another where those files are stored.
 
     └─$ gobuster dir -u http://10.49.182.213:80 -w /usr/share/wordlists/dirb/common.txt
-    ![gobuster-pagefound](Attachments/Screenshot 2026-03-26 182531.png)
+    ![scan2](./Attachments/Screenshot%202026-03-26%20182531.png)
 
 3. Getting a Shell (Exploitation)
 
@@ -34,7 +34,7 @@ Step 1: The Payload
 You need a script (the "payload") that tells the server to open a connection back to you. Since RootMe is a Linux/Apache server, we usually use PHP.
 
     Common Script: The most popular one is thePentestMonkey PHP Reverse Shell.
-    ![pentest_monkey-github](Attachments/Screenshot 2026-03-26 182129.png)
+    ![scan3](./Attachments/Screenshot%202026-03-26%20182129.png)
     
     The Edit: You must open the script and change two things:
 
@@ -60,8 +60,8 @@ Before you click "Upload" or "Execute," you need your computer to be "listening"
 
 (Note: Use the same port you put in your script!)
 
-![Netcat (The Listener)](Attachments/Screenshot 2026-03-26 183413.png)
-![flag-answer](Attachments/Screenshot 2026-03-26 183821.png)
+![scan4](./Attachments/Screenshot%202026-03-26%20183413.png)
+![scan5](./Attachments/Screenshot%202026-03-26%20183821.png)
 
 The Goal
 
@@ -147,7 +147,7 @@ find / -user root -perm -4000 -print 2>/dev/null
 The Output: You will see a long list. Most are normal (like /usr/bin/passwd). Look for something that shouldn't be there—a programming language or a tool that allows you to interact with the system.
 
 Hint: Look for a file related to Python. It is very "weird" for Python to have root-level SUID permissions!.
-![suid-files](Attachments/Screenshot 2026-03-26 1841301.png)
+![scan6](./Attachments/Screenshot%202026-03-26%201841301.png)
 
 3. Escalating Your Privileges
 
@@ -170,4 +170,4 @@ Now, go find the gold. The root flag is always in the root user's home directory
     ls
 
     cat root.txt
-    ![flag](Attachments/Screenshot 2026-03-26 184938.png)
+    ![scan7](./Attachments/Screenshot%202026-03-26%20184938.png)
